@@ -24,12 +24,20 @@ export const charsReducer = (state = initialState, action) => {
 
     }
 
-    case SUCCESS {
+    case SUCCESS: {
       return {
         ...state,
         isLoading: false,
         errorMessage: null,
-        characters,
+        characters: action.characters,
+      }
+    }
+
+    case FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.message,
       }
     }
     // Fill me in with the important reducers

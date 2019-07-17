@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getData } from './index';
 
 import { CharacterList } from "../components";
 // import actions
@@ -10,12 +11,12 @@ class CharacterListView extends React.Component {
   }
 
   componentDidMount() {
-    // call our action
+    this.props.getData()
   }
 
   render() {
     if (this.props.fetching) {
-      // return something here to indicate that you are fetching data
+     <p>LOADING DATA...</p>
     }
     return (
       <div className="CharactersList_wrapper">

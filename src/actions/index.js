@@ -6,7 +6,7 @@ export const FAILURE = 'FAILURE';
 
 
 export function getChar(characters) {
-    return{
+    return {
         type: GET_CHAR,
         characters,
 
@@ -26,7 +26,7 @@ export function getData() {
                 dispatch({ type: SUCCESS, payload: res.data })
             })
             .catch((error) => {
-                dispatch({ type: FAILURE, payload: error.response.data})
+                dispatch({ type: FAILURE, payload: error.response.data })
             })
     }
 }
