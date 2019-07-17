@@ -5,15 +5,21 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./reducers";
-// needed dependancies
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import rootReducer from './reducers/index';
 // applyMiddleware from redux
 // thunk from redux-thunk
 // logger from redux-logger
 // rootReducer from ./reducers
 
 const store = createStore(
-  rootReducer
-  /* applyMiddleware goes here */
+  rootReducer,
+  compose(
+    applyMiddleware(thunk, logger),
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
+  ),
+  
 );
 
 ReactDOM.render(
