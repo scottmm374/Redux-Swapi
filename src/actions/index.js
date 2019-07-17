@@ -1,24 +1,32 @@
 import axios from 'axios';
+export const GET_CHAR = 'GET_CHAR';
+export const FETCHING = 'FETCHING';
+export const SUCCESS = 'SUCCESS';
+export const FAILURE = 'FAILURE';
 
-export const GET_DATA_START = 'GET_DATA_START';
-export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
-export const GET_DATA_FAILED = 'GET_DATA_FAILED';
 
+export function getChar(characters) {
+    return{
+        type: GET_CHAR,
+        characters,
 
-
+    }
+}
 
 
 
 export function getData() {
     return (dispatch) => {
-        dispatch({ type: GET_DATA_START })
+        dispatch({ type: FETCHING })
 
         axios.get(`https://swapi.co/api/people/`)
+
             .then((res) => {
-                dispatch({ type: GET_DATA_SUCCESS, payload: res.data })
+                console.log("response", res)
+                dispatch({ type: SUCCESS, payload: res.data })
             })
             .catch((error) => {
-                dispatch({ type: GET_DATA_FAILED, payload: error.response.data})
+                dispatch({ type: FAILURE, payload: error.response.data})
             })
     }
 }
