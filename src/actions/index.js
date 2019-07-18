@@ -22,7 +22,7 @@ export function getData() {
         axios.get(`https://swapi.co/api/people/`)
 
             .then((res) => {
-                console.log("response", res)
+                console.log("response", res.data)
                 dispatch({ type: SUCCESS, payload: res.data })
             })
             .catch((error) => {
