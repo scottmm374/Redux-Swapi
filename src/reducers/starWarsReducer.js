@@ -29,7 +29,7 @@ export const charsReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         errorMessage: null,
-        characters: action.characters,
+        characters: action.payload,
       }
     }
 

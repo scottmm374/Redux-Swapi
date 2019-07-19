@@ -20,7 +20,7 @@ class CharacterListView extends React.Component {
     }
     return (
       <div className="CharactersList_wrapper">
-        <CharacterList characters={this.props.characters} />
+        <CharacterList characters={this.props.character} />
       </div>
     );
   }
@@ -28,9 +28,10 @@ class CharacterListView extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    characters: state.characters,
+    character: state.charsReducer.character,
+    fetching: state.charsReducer.fetching,
   }
 }
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
-export default connect(null, mapStateToProps, { getData }) (CharacterListView); 
+export default connect(mapStateToProps, { getData }) (CharacterListView); 
