@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getData } from '../actions/index'
-;
+import { getData } from '../actions/index';
 import { CharacterList } from "../components";
 // import actions
 
@@ -20,7 +19,7 @@ class CharacterListView extends React.Component {
     }
     return (
       <div className="CharactersList_wrapper">
-        <CharacterList characters={this.props.character} />
+        <CharacterList characters={this.props.characters} />
       </div>
     );
   }
@@ -28,8 +27,8 @@ class CharacterListView extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    character: state.charsReducer.character,
-    fetching: state.charsReducer.fetching,
+    characters: state.charsReducer.characters,
+    getData: state.charsReducer.getData,
   }
 }
 // our mapStateToProps needs to have two properties inherited from state
